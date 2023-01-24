@@ -75,3 +75,10 @@ a{
     margin-left: auto;
     margin-right: auto;
 }
+
+#mensaje{
+    text-align: center;
+    font-size: 25px;
+    color:red;
+    font-weight: bold;
+}

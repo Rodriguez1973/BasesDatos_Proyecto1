@@ -26,7 +26,8 @@
                 //Genera la select con los resultados de la consulta, en el value de las option se encuentra el id del producto.
                 echo "<select id='producto' name='producto' id=`producto'>";
                 while ($producto != null) {
-                    echo "<option value='" . $producto->id . "'>" . $producto->nombre . "</option>";
+                    $datos = ["idProducto" => $producto->id, "nombreProducto" => $producto->nombre];
+                    echo "<option value='" . serialize($datos) . "'>" . $producto->nombre . "</option>";
                     $producto = $resultado->fetch_object();
                 }
                 echo "</select>";
