@@ -23,7 +23,8 @@
                 //Consulta a la base de datos. Selecciona el nombre e id de la tabla productos.
                 $resultado = $conexionBD->query("select nombre, id from productos;");
                 $producto = $resultado->fetch_object();
-                //Genera la select con los resultados de la consulta, en el value de las option se encuentra el id del producto.
+                //Genera la select con los resultados de la consulta, en el value de las option se 
+                //encuentra el id del producto.
                 echo "<select id='producto' name='producto' id=`producto'>";
                 while ($producto != null) {
                     $datos = ["idProducto" => $producto->id, "nombreProducto" => $producto->nombre];

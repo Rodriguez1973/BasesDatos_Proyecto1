@@ -23,7 +23,8 @@ if (isset($_POST['consultar'])) {
     require_once './ConexionBaseDatos.php';
     //Si ha sido posible la conexión.
     if (!$conexionBD->connect_error) {
-        $consulta = "update stocks set unidades=" . $unidades . " where tienda=" . $id_tienda . " and producto=" . $id_producto . ";";
+        $consulta = "update stocks set unidades=" . $unidades . " where tienda=" . $id_tienda . 
+                " and producto=" . $id_producto . ";";
         //Consulta a la base de datos. Actualiza en númedero de unidades de la tabla stocks.
         $resultado = $conexionBD->query($consulta);
         if (!$resultado) {
@@ -47,7 +48,8 @@ if (isset($_POST['consultar'])) {
     require_once './ConexionBaseDatos.php';
     //Si ha sido posible la conexión.
     if (!$conexionBD->connect_error) {
-        $consulta = "delete from stocks where tienda=" . $id_tienda . " and producto=" . $id_producto . ";";
+        $consulta = "delete from stocks where tienda=" . $id_tienda . " and producto=" . 
+                $id_producto . ";";
         //Consulta a la base de datos. Actualiza en númedero de unidades de la tabla stocks.
         $resultado = $conexionBD->query($consulta);
         if (!$resultado) {
@@ -79,9 +81,10 @@ if (isset($_POST['consultar'])) {
             //Si ha sido posible la conexión.
             if (!$conexionBD->connect_error) {
                 //Consulta a la base de datos. Selecciona el nombre e id de la tabla productos.
-                $resultado = $conexionBD->query("select p.id as idProducto, t.nombre as "
-                        . "nombreTienda, t.id as idTienda, s.unidades as unidades from productos p inner join stocks "
-                        . "s on p.id=s.producto inner join tiendas t on s.tienda=t.id where p.id=" . $id_producto . ";");
+                $resultado = $conexionBD->query("select t.nombre as nombreTienda, t.id as idTienda, "
+                        . "s.unidades as unidades from productos p inner join stocks s on p.id="
+                        . "s.producto inner join tiendas t on s.tienda=t.id where p.id=" . 
+                        $id_producto . ";");
                 $producto = $resultado->fetch_object();
                 echo "<p id='unidadesProducto'>Unidades del producto: " . $nombreProducto . "<p>";
                 //La consulta a devuelto datos.
@@ -97,12 +100,16 @@ if (isset($_POST['consultar'])) {
                     $cont = 0;    //Contador de número de registro. 
                     while ($producto != null) {
                         echo "<tr><td>" . $producto->nombreTienda . "</td><td><input type='number' "
-                        . " name='registro" . $cont . "' min='0' max='2147483647' value='" . $producto->unidades . "'</td><td>";
-                        $datos = ["nombreProducto" => $nombreProducto, "idProducto" => $producto->idProducto, "idTienda" => $producto->idTienda, "nameUnidades" => "registro" . $cont];
-                        echo "<button type='submit' name='actualizar' value='" . serialize($datos) . "'>Actualizar";
-                        $datos = ["nombreProducto" => $nombreProducto, "idProducto" => $producto->idProducto, "idTienda" => $producto->idTienda];
-                        echo "<button type='submit' name='borrar' value='" . serialize($datos) . "'>Borrar"
-                        . "</td></tr>";
+                        . " name='registro" . $cont . "' min='0' max='2147483647' required value='" . 
+                                $producto->unidades . "'</td><td>";
+                        $datos = ["nombreProducto" => $nombreProducto, "idProducto" => $id_producto,
+                            "idTienda" => $producto->idTienda, "nameUnidades" => "registro" . $cont];
+                        echo "<button type='submit' name='actualizar' value='" . serialize($datos) .
+                                "'>Actualizar";
+                        $datos = ["nombreProducto" => $nombreProducto, "idProducto" => $id_producto,
+                            "idTienda" => $producto->idTienda];
+                        echo "<button type='submit' name='borrar' value='" . serialize($datos) . "'>"
+                                . "Borrar</td></tr>";
                         $cont++;
                         $producto = $resultado->fetch_object();
                     }
@@ -118,6 +125,7 @@ if (isset($_POST['consultar'])) {
             }
             ?>
         </form>
-        <button type='button' id='otro' name='otro' value=''><a href="./stock.php">Consultar otro producto</a>
+        <button type='button' id='otro' name='otro' value=''><a href="./stock.php">Consultar otro 
+                producto</a>
     </body>
 </html>
