@@ -1,0 +1,70 @@
+/* 
+    Created on : 20 ene 2023, 11:19:53
+    Author     : José A. Rodríguez López
+*/
+
+body{
+    font-family: sans-serif;
+    position: absolute;
+    top: 0;
+    width: 100%;
+    background-color: #ffe4c4;
+}
+
+h1 {
+    font-size: 50px;
+    text-align: center;
+    color: #ff7f50;
+}
+
+label {
+    font-size: 25px;
+    font-weight: bold;
+    margin: 10px;
+}
+
+select {
+    font-size: 20px;
+    margin: 20px 10px;
+}
+
+button{
+    font-weight: bold;
+    color:white;
+    font-size: 20px;
+    background-color: #ff7f50;
+    margin: 0px 10px;
+    padding: 5px;
+}
+
+#consultar{
+    margin: 20px 10px;
+}
+
+table{
+    border: 1px solid black;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+td, th{
+    border: 1px solid black;
+    padding: 10px;
+}
+
+th{
+    color:white;
+    font-size: 20px;
+    background-color: #ff7f50;
+}
+
+a{
+    color: white;
+    text-decoration: none;
+}
+
+#otro{
+    margin-left: auto;
+    margin-right: auto;
+    color:green;
+}
