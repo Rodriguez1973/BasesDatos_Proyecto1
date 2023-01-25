@@ -17,8 +17,13 @@
             <?php
             //Realiza la conexión a la base de datos.
             require_once './ConexionBaseDatos.php';
+            //Muestra el mensaje si hay un problema en la conexión
+            if ($errorConexion) {
+                echo "<p class='mensaje'>" . $mensaje . "</p>"; //Muestra el mensaje.
+            }
+
             //Si ha sido posible la conexión.
-            if ($conexionBD) {
+            if (isset($conexionBD)) {
                 echo '<label for="producto">Elige un producto</label><br>';
                 //Consulta a la base de datos. Selecciona el nombre e id de la tabla productos.
                 $resultado = $conexionBD->query("select nombre, id from productos;");

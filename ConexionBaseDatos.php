@@ -1,7 +1,7 @@
 <?php
 $nombreServidor='localhost';
 $usuario='gestor';
-$contraseña='secreto';
+$contraseña='secreto1';
 $baseDatos='proyecto';
 $errorConexion=false; //FFlag que controla si existe un error en la conexión a la base de datos.
 

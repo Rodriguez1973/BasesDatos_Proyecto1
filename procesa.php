@@ -22,7 +22,7 @@ if (isset($_POST['consultar'])) {
     //Realiza la conexión a la base de datos.
     require_once './ConexionBaseDatos.php';
     //Si ha sido posible la conexión.
-    if ($conexionBD) {
+    if (isset($conexionBD)) {
         $consulta = "update stocks set unidades=" . $unidades . " where tienda=" . $id_tienda . 
                 " and producto=" . $id_producto . ";";
         //Consulta a la base de datos. Actualiza en númedero de unidades de la tabla stocks.
@@ -47,7 +47,7 @@ if (isset($_POST['consultar'])) {
     //Realiza la conexión a la base de datos.
     require_once './ConexionBaseDatos.php';
     //Si ha sido posible la conexión.
-    if ($conexionBD) {
+    if (isset($conexionBD)) {
         $consulta = "delete from stocks where tienda=" . $id_tienda . " and producto=" . 
                 $id_producto . ";";
         //Consulta a la base de datos. Actualiza en númedero de unidades de la tabla stocks.
@@ -86,7 +86,7 @@ if (isset($_POST['consultar'])) {
         <form name="formulario" action="<?php echo $_SERVER['PHP_SELF']; ?>" method="POST">
             <?php
             //Si ha sido posible la conexión.
-            if ($conexionBD) {
+            if (isset($conexionBD)) {
                 //Consulta a la base de datos. Selecciona el nombre e id de la tabla productos.
                 $resultado = $conexionBD->query("select t.nombre as nombreTienda, t.id as idTienda, "
                         . "s.unidades as unidades from productos p inner join stocks s on p.id="
