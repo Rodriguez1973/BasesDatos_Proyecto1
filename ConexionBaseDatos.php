@@ -12,4 +12,3 @@ try{
             $exception->getMessage()."</p>";
     $errorConexion=true;
 }
-
