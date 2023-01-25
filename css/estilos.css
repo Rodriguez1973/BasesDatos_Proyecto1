@@ -76,7 +76,7 @@ a{
     margin-right: auto;
 }
 
-#mensaje{
+.mensaje{
     text-align: center;
     font-size: 25px;
     color:red;

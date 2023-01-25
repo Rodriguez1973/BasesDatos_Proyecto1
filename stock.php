@@ -12,14 +12,14 @@
     </head>
     <body>
         <h1>Consultar stock</h1>
-        <label for="producto">Elige un producto</label><br>
         <form name="formulario" action="procesa.php" method="POST">
             <link rel="stylesheet" href="./css/estilos.css"/>
             <?php
             //Realiza la conexión a la base de datos.
             require_once './ConexionBaseDatos.php';
             //Si ha sido posible la conexión.
-            if (!$conexionBD->connect_error) {
+            if ($conexionBD) {
+                echo '<label for="producto">Elige un producto</label><br>';
                 //Consulta a la base de datos. Selecciona el nombre e id de la tabla productos.
                 $resultado = $conexionBD->query("select nombre, id from productos;");
                 $producto = $resultado->fetch_object();
@@ -33,9 +33,9 @@
                 }
                 echo "</select>";
                 $conexionBD->close();   //Cierra la conexión a la base de datos.
+                echo '<button type="submit" id="consultar" name="consultar" value="">Consultar Stock';
             }
             ?>
-            <button type="submit" id="consultar" name="consultar" value="">Consultar Stock
         </form>
     </body>
 </html>
